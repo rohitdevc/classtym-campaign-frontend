@@ -30,7 +30,7 @@ export default function StudentComponent({
   studentBenefits,
   studentWhyJoinUs
 }: StudentComponentProps) {
-  const basePath = process.env.NEXT_PUBLIC_IMG_URL;
+  const basePath = process.env.NEXT_PUBLIC_PATH;
   
   const [ip, setIp] = useState("");
 
@@ -46,7 +46,7 @@ export default function StudentComponent({
 
   useEffect(() => {
     async function getIp() {
-      const res = await fetch("/api/ip");
+      const res = await fetch(basePath + "api/ip");
       const data = await res.json();
       setIp(data.ip);
     }
@@ -113,7 +113,7 @@ export default function StudentComponent({
 
         studentRegistrationForm.ip_address = ip;
 
-        const response = await fetch("/api/student/registration", {
+        const response = await fetch(basePath + "api/student/registration", {
           method: "POST",
           body: JSON.stringify(studentRegistrationForm),
           headers: {

@@ -3,7 +3,7 @@
 import Image from "next/image"
 
 export default function Header() {
-    const basePath = process.env.NEXT_PUBLIC_IMG_URL;
+    const basePath = process.env.NEXT_PUBLIC_PATH;
 
     return (
         <header className="container max-w-full flex justify-center items-center py-5 shadow-[0_0px_4px_0_rgba(0,0,0,0.25)]">

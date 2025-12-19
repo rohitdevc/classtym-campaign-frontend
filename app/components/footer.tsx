@@ -19,7 +19,7 @@ const DoubleGradientArrows = ({ size = 24 }) => (
 );
 
 export default function Footer() {
-    const basePath = process.env.NEXT_PUBLIC_IMG_URL;
+    const basePath = process.env.NEXT_PUBLIC_PATH;
 
     return (
         <footer className="container max-w-full flex flex-col xl:flex-row gap-8 md:gap-10 xl:gap-0 items-center py-10 px-5 md:px-10">

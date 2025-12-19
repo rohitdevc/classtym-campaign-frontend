@@ -32,7 +32,7 @@ export default function ExpertComponent({
   expertBenefits,
   expertWhyJoinUs
 }: ExpertComponentProps) {
-  const basePath = process.env.NEXT_PUBLIC_IMG_URL;
+  const basePath = process.env.NEXT_PUBLIC_PATH;
   
   const [ip, setIp] = useState("");
 
@@ -48,7 +48,7 @@ export default function ExpertComponent({
 
   useEffect(() => {
     async function getIp() {
-      const res = await fetch("/api/ip");
+      const res = await fetch(basePath + "api/ip");
       const data = await res.json();
       setIp(data.ip);
     }
@@ -115,7 +115,7 @@ export default function ExpertComponent({
 
         expertRegistrationForm.ip_address = ip;
 
-        const response = await fetch("/api/expert/registration", {
+        const response = await fetch(basePath + "api/expert/registration", {
           method: "POST",
           body: JSON.stringify(expertRegistrationForm),
           headers: {
