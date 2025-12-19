@@ -35,7 +35,7 @@ export default function ExpertComponent({
   const basePath = process.env.NEXT_PUBLIC_PATH;
   
   const [ip, setIp] = useState("");
-  const [showLoader, updateLoader] = useState(true);
+  const [showLoader, updateLoader] = useState(false);
 
   const [expertRegistrationForm, setExpertRegistrationForm] = useState<ExpertRegistration>({
     expert_full_name: '',
