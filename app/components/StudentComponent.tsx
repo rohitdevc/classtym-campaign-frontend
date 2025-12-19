@@ -34,6 +34,8 @@ export default function StudentComponent({
   
   const [ip, setIp] = useState("");
 
+  const [showLoader, updateLoader] = useState(false);
+
   const [studentRegistrationForm, setStudentRegistrationForm] = useState<StudentRegistration>({
     student_full_name: '',
     student_mobile_number: '',
@@ -111,6 +113,8 @@ export default function StudentComponent({
             return;
         }
 
+        updateLoader(true);
+
         studentRegistrationForm.ip_address = ip;
 
         const response = await fetch(basePath + "api/student/registration", {
@@ -120,6 +124,8 @@ export default function StudentComponent({
             "Content-Type": "application/json"
           }
         })
+
+        updateLoader(false);
 
         if (!response.ok) {
           const err = await response.json();
@@ -186,7 +192,7 @@ export default function StudentComponent({
 
   return (
     <>
-    <Header />
+    <Header showLoader={showLoader} />
     <section className="container max-w-full flex flex-col lg:flex-row gap-10 lg:gap-5 py-25 lg:py-20 px-5 md:px-5 relative overflow-hidden">
       <div className="absolute w-[90%] lg:w-[46%] xl:w-[45%] top-10 translate-x-1/2 lg:translate-x-0 right-1/2 lg:right-5 xl:right-20 flex flex-col gap-2 md:gap-5 rounded-3xl px-5 pt-5 md:pt-8 pb-5 lg:pb-5 xl:pb-15 border-2 border-[#EFEFEF] z-0">
           <h1 className="text-4xl md:text-6xl lg:text-4xl xl:text-7xl font-bold flex gap-5">Online <span className="flex flex-col gap-1">Tuitions <Image src={`${basePath}images/icons/underline-stroke.svg`} alt="Underline Stroke" width={300} height={5} className="px-5 w-55" /></span></h1>
