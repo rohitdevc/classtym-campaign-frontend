@@ -32,33 +32,33 @@ export default function Footer() {
                     <ul className="flex gap-5">
                         <li>
                             <Link href="https://www.linkedin.com/company/classtym/" target="_blank">
-                                <Image src="/images/icons/linkedin.png" alt="Linked In" width={35} height={35} className="w-12 md:w-10" />
+                                <Image src={`${basePath}images/icons/linkedin.png`} alt="Linked In" width={35} height={35} className="w-12 md:w-10" />
                             </Link>
                         </li>
                         <li>
                             <Link href="https://www.instagram.com/classtym_/" target="_blank">
-                                <Image src="/images/icons/instagram.png" alt="Instagram" width={35} height={35} className="w-12 md:w-10" />
+                                <Image src={`${basePath}/icons/instagram.png`} alt="Instagram" width={35} height={35} className="w-12 md:w-10" />
                             </Link>
                         </li>
                         <li>
                             <Link href="https://www.facebook.com/classtym/" target="_blank">
-                                <Image src="/images/icons/facebook.png" alt="Facebook" width={35} height={35} className="w-12 md:w-10" />
+                                <Image src={`${basePath}/icons/facebook.png`} alt="Facebook" width={35} height={35} className="w-12 md:w-10" />
                             </Link>
                         </li>
                         <li>
                             <Link href="https://m.youtube.com/channel/UCHTvDrarwY0Eh-MMxmtcV7Q/featured" target="_blank">
-                                <Image src="/images/icons/youtube.png" alt="YouTube" width={35} height={35} className="w-12 md:w-10" />
+                                <Image src={`${basePath}/icons/youtube.png`} alt="YouTube" width={35} height={35} className="w-12 md:w-10" />
                             </Link>
                         </li>
                     </ul>
                 </div>
                 <div className="flex flex-col gap-5">
                     <Link href="tel:+917065060222" className="flex gap-3 items-center">
-                        <Image src="/images/icons/phone.png" alt="Phone" width={30} height={30} className="w-4 h-4" />
+                        <Image src={`${basePath}/icons/phone.png`} alt="Phone" width={30} height={30} className="w-4 h-4" />
                         <span>+91 70650 60222</span>
                     </Link>
                     <Link href="mailto:info@classtym.com" className="flex gap-3 items-center">
-                        <Image src="/images/icons/email.png" alt="Mail" width={30} height={30} className="w-5 h-4" />
+                        <Image src={`${basePath}/icons/email.png`} alt="Mail" width={30} height={30} className="w-5 h-4" />
                         <span>info@classtym.com</span>
                     </Link>
                 </div>

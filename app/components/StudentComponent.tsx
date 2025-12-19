@@ -30,6 +30,8 @@ export default function StudentComponent({
   studentBenefits,
   studentWhyJoinUs
 }: StudentComponentProps) {
+  const basePath = process.env.NEXT_PUBLIC_IMG_URL;
+  
   const [ip, setIp] = useState("");
 
   const [studentRegistrationForm, setStudentRegistrationForm] = useState<StudentRegistration>({
@@ -187,32 +189,32 @@ export default function StudentComponent({
     <Header />
     <section className="container max-w-full flex flex-col lg:flex-row gap-10 lg:gap-5 py-25 lg:py-20 px-5 md:px-5 relative overflow-hidden">
       <div className="absolute w-[90%] lg:w-[46%] xl:w-[45%] top-10 translate-x-1/2 lg:translate-x-0 right-1/2 lg:right-5 xl:right-20 flex flex-col gap-2 md:gap-5 rounded-3xl px-5 pt-5 md:pt-8 pb-5 lg:pb-5 xl:pb-15 border-2 border-[#EFEFEF] z-0">
-          <h1 className="text-4xl md:text-6xl lg:text-4xl xl:text-7xl font-bold flex gap-5">Online <span className="flex flex-col gap-1">Tuitions <Image src="/images/icons/underline-stroke.svg" alt="Underline Stroke" width={300} height={5} className="px-5 w-55" /></span></h1>
+          <h1 className="text-4xl md:text-6xl lg:text-4xl xl:text-7xl font-bold flex gap-5">Online <span className="flex flex-col gap-1">Tuitions <Image src={`${basePath}/icons/underline-stroke.svg`} alt="Underline Stroke" width={300} height={5} className="px-5 w-55" /></span></h1>
           <h2 className="text-2xl xl:text-5xl leading-tight pr-15 md:pr-0">From <span className="text-[#507FCB]">India's Best</span> Tutors, Right at Home!</h2>
       </div>
       <div className="w-full lg:w-1/2 relative mt-35 sm:mt-40 md:mt-50 lg:mt-0">
           <span className="absolute -top-8 left-[16%]">
-            <Image src="/images/icons/sparkle-one.png" alt="Sparkle" width={50} height={50} className="w-5" />
+            <Image src={`${basePath}/icons/sparkle-one.png`} alt="Sparkle" width={50} height={50} className="w-5" />
           </span>
 
           <span className="absolute bottom-[20%] left-[5%]">
-            <Image src="/images/icons/sparkle-three.png" alt="Sparkle" width={50} height={50} className="w-7" />
+            <Image src={`${basePath}/icons/sparkle-three.png`} alt="Sparkle" width={50} height={50} className="w-7" />
           </span>
 
           <span className="absolute top-[35%] right-10">
-            <Image src="/images/icons/star.png" alt="Star" width={50} height={50} className="w-4" />
+            <Image src={`${basePath}/icons/star.png`} alt="Star" width={50} height={50} className="w-4" />
           </span>
 
           <span className="absolute top-15 left-[51%]">
-            <Image src="/images/icons/sparkle-four.png" alt="Sparkle" width={50} height={50} className="w-5" />
+            <Image src={`${basePath}/icons/sparkle-four.png`} alt="Sparkle" width={50} height={50} className="w-5" />
           </span>
         
           <span className="absolute bottom-[10%] left-[0%] sm:left-[48%]">
-            <Image src="/images/icons/plus.png" alt="Plus" width={50} height={50} className="w-3" />
+            <Image src={`${basePath}/icons/plus.png`} alt="Plus" width={50} height={50} className="w-3" />
           </span>
 
           <span className="absolute bottom-15 sm:bottom-[43%] right-25 sm:right-5">
-            <Image src="/images/icons/5-star.png" alt="5 Star" width={50} height={50} className="w-45" />
+            <Image src={`${basePath}/icons/5-star.png`} alt="5 Star" width={50} height={50} className="w-45" />
           </span>
           {
             
@@ -237,7 +239,7 @@ export default function StudentComponent({
                         <div className="absolute left-0 bottom-0 z-10 text-white flex flex-col gap-0 px-3 py-3">
                           <div className="flex gap-2 items-center">
                             <h2 className="text-lg">{expert.expert_name}</h2>
-                            <Image src="/images/icons/profile-green-tick.png" alt="Profile Green Tick" width={50} height={50} className="w-4 h-4" />
+                            <Image src={`${basePath}/icons/profile-green-tick.png`} alt="Profile Green Tick" width={50} height={50} className="w-4 h-4" />
                           </div>
                           <p className="text-[#AECDFF] text-xs md:text-sm">{expert.expert_education}</p>
                         </div>
@@ -261,7 +263,7 @@ export default function StudentComponent({
                         <div className="absolute left-0 bottom-0 z-10 text-white flex flex-col gap-0 px-3 py-3">
                           <div className="flex gap-2 items-center">
                             <h2 className="text-lg">{expert.expert_name}</h2>
-                            <Image src="/images/icons/profile-green-tick.png" alt="Profile Green Tick" width={50} height={50} className="w-4 h-4" />
+                            <Image src={`${basePath}/icons/profile-green-tick.png`} alt="Profile Green Tick" width={50} height={50} className="w-4 h-4" />
                           </div>
                           <p className="text-[#AECDFF] text-xs md:text-sm">{expert.expert_education}</p>
                         </div>
@@ -288,7 +290,7 @@ export default function StudentComponent({
               {
                 studentBenefits.map((benefit, key) => (
                 <li className="relative flex items-center gap-2 rounded-4xl w-fit px-3 py-2 shadow-[0_0_8px_rgba(112,112,112,0.35)] before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:right-full before:w-[100vw] before:border-t before:border-dashed before:border-2 before:border-[#D7D7D7]" key={key}>
-                    <Image src="/images/icons/green-check.png" alt="Green Check" width={88} height={88} className="w-6 md:w-5" />
+                    <Image src={`${basePath}/icons/green-check.png`} alt="Green Check" width={88} height={88} className="w-6 md:w-5" />
                     {benefit.benefit_caption}
                 </li>
                 ))
@@ -358,15 +360,15 @@ export default function StudentComponent({
       </div>
 
       <span className="absolute bottom-0 left-1/2 -translate-x-1/2 cursor-pointer" onClick={() => scrollWithOffset(StudentBenefitsRef)}>
-        <Image src="/images/icons/circle-arrow.png" alt="Circle Arrow" width={100} height={100} className="w-13" />
+        <Image src={`${basePath}/icons/circle-arrow.png`} alt="Circle Arrow" width={100} height={100} className="w-13" />
       </span>
 
       <span className="absolute -right-10 md:-right-15 bottom-[60%] lg:bottom-[35%]">
-        <Image src="/images/icons/pie-chart.png" alt="Pie Chart" width={300} height={300} className="w-25 md:w-40"/>
+        <Image src={`${basePath}/icons/pie-chart.png`} alt="Pie Chart" width={300} height={300} className="w-25 md:w-40"/>
       </span>
 
       <span className="absolute right-25 md:right-40 bottom-[61%] lg:bottom-[35%] hidden lg:block">
-        <Image src="/images/icons/chat.png" alt="Chat" width={54} height={43} className="w-7 md:w-10"/>
+        <Image src={`${basePath}/icons/chat.png`} alt="Chat" width={54} height={43} className="w-7 md:w-10"/>
       </span>
     </section>
     {
