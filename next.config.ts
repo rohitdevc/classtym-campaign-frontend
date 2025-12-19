@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  basePath: '/classtym-campaign',
+  assetPrefix: '/classtym-campaign',
   turbopack: {
     root: __dirname,
   },
