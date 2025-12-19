@@ -33,7 +33,7 @@ export default function ExpertComponent({
   expertWhyJoinUs
 }: ExpertComponentProps) {
   const basePath = process.env.NEXT_PUBLIC_IMG_URL;
-
+  
   const [ip, setIp] = useState("");
 
   const [expertRegistrationForm, setExpertRegistrationForm] = useState<ExpertRegistration>({
@@ -180,21 +180,21 @@ export default function ExpertComponent({
     <Header />
     <section className="container max-w-full flex flex-col lg:flex-row gap-10 lg:gap-5 py-25 lg:py-10 px-5 md:px-5 relative overflow-hidden">
       <div className="absolute w-[90%] lg:w-[46%] xl:w-[48%] top-10 translate-x-1/2 lg:translate-x-0 right-1/2 lg:right-5 xl:right-5 flex flex-col gap-2 md:gap-5 rounded-3xl px-5 pt-5 md:pt-8 pb-5 lg:pb-5 xl:pb-15 border-2 border-[#EFEFEF] z-0">
-          <h1 className="text-4xl md:text-6xl lg:text-4xl xl:text-7xl font-bold flex gap-5">Teach <span className="flex flex-col gap-1">Online <Image src={`${basePath}/icons/underline-stroke.svg`} alt="Underline Stroke" width={300} height={5} className="px-5 w-55" /></span></h1>
+          <h1 className="text-4xl md:text-6xl lg:text-4xl xl:text-7xl font-bold flex gap-5">Teach <span className="flex flex-col gap-1">Online <Image src={`${basePath}images/icons/underline-stroke.svg`} alt="Underline Stroke" width={300} height={5} className="px-5 w-55" /></span></h1>
           <h2 className="text-xl md:text-2xl xl:text-4xl">Increase your income by <span className="text-[#507FCB]">2x</span></h2>
       </div>
       {
         expertConversation && expertConversation.length === 2 && (
         <div className="w-full lg:w-1/2 flex flex-col gap-8 md:px-15 lg:px-5 py-5 relative mt-20 md:mt-40 lg:mt-0">
           <span className="absolute left-0 md:left-[98%] lg:left-[97%] xl:left-[90%] top-[20%] md:top-0">
-            <Image src={`${basePath}/icons/star.png`} alt="Star" width={50} height={50} className="w-[0.9rem]" />
+            <Image src={`${basePath}images/icons/star.png`} alt="Star" width={50} height={50} className="w-[0.9rem]" />
           </span>
           <span className="absolute top-[25%] left-[60%] md:left-[50%]">
-            <Image src={`${basePath}/icons/conversation-string.png`} alt="Conversation String" width={504} height={643} className="w-30 md:w-35" />
+            <Image src={`${basePath}images/icons/conversation-string.png`} alt="Conversation String" width={504} height={643} className="w-30 md:w-35" />
           </span>
           <div className="flex gap-1 md:gap-3 relative justify-end">
             <span className="absolute bottom-10 left-1/2 md:left-[55%]">
-              <Image src={`${basePath}/icons/plus.png`} alt="Plus" width={50} height={50} className="w-3" />
+              <Image src={`${basePath}images/icons/plus.png`} alt="Plus" width={50} height={50} className="w-3" />
             </span>
             <p className="text-sm xl:text-lg flex items-center px-4 border border-[#DEEAFF] rounded-t-2xl rounded-bl-2xl rounded-br-sm h-12 shadow-[0_5px_4px_0_rgba(13,153,255,0.15) font-bold lg:font-normal">{expertConversation[0].conversation_speech}</p>
             <div className="rounded-xl p-1 relative inline-block w-50 xl:w-65">
@@ -205,13 +205,13 @@ export default function ExpertComponent({
           </div>
           <div className="flex flex-col gap-3 relative w-1/2">
             <span className="absolute left-12 top-8">
-              <Image src={`${basePath}/icons/sparkle-one.png`} alt="Sparkle" width={50} height={50} className="w-5" />
+              <Image src={`${basePath}images/icons/sparkle-one.png`} alt="Sparkle" width={50} height={50} className="w-5" />
             </span>
             <span className="absolute left-2 bottom-0">
-              <Image src={`${basePath}/icons/sparkle-two.png`} alt="Sparkle" width={50} height={50} className="w-5" />
+              <Image src={`${basePath}images/icons/sparkle-two.png`} alt="Sparkle" width={50} height={50} className="w-5" />
             </span>
             <span className="absolute right-0 bottom-15">
-              <Image src={`${basePath}/icons/sparkle-three.png`} alt="Sparkle" width={50} height={50} className="w-8" />
+              <Image src={`${basePath}images/icons/sparkle-three.png`} alt="Sparkle" width={50} height={50} className="w-8" />
             </span>
             <div className="flex justify-end md:justify-start lg:justify-end sm:mx-auto lg:mx-0">
               <p className="text-sm xl:text-lg flex items-center px-4 bg-[#507fcb] text-white rounded-t-2xl rounded-br-2xl rounded-bl-sm w-fit h-12">{expertConversation[1].conversation_speech}</p>
@@ -226,7 +226,7 @@ export default function ExpertComponent({
               {
                 expertBenefits.map((benefit, key) => (
                 <li className="flex items-center gap-2 rounded-l-4xl rounded-r-xl w-fit p-3 shadow-[0_0_8px_rgba(112,112,112,0.35)]" key={key}>
-                  <Image src={`${basePath}/icons/green-check.png`} alt="Green Check" width={88} height={88} className="w-6 md:w-5" />
+                  <Image src={`${basePath}images/icons/green-check.png`} alt="Green Check" width={88} height={88} className="w-6 md:w-5" />
                   {benefit.benefit_caption}
                 </li>
               ))
@@ -298,15 +298,15 @@ export default function ExpertComponent({
       </div>
 
       <span className="absolute bottom-0 left-1/2 -translate-x-1/2 cursor-pointer" onClick={() => scrollWithOffset(ExpertBenefitsRef)}>
-        <Image src={`${basePath}/icons/circle-arrow.png`} alt="Circle Arrow" width={100} height={100} className="w-13" />
+        <Image src={`${basePath}images/icons/circle-arrow.png`} alt="Circle Arrow" width={100} height={100} className="w-13" />
       </span>
 
       <span className="absolute -right-10 md:-right-15 bottom-[60%] lg:bottom-[35%]">
-        <Image src={`${basePath}/icons/pie-chart.png`} alt="Pie Chart" width={300} height={300} className="w-25 md:w-40"/>
+        <Image src={`${basePath}images/icons/pie-chart.png`} alt="Pie Chart" width={300} height={300} className="w-25 md:w-40"/>
       </span>
 
       <span className="absolute right-25 md:right-40 bottom-[61%] lg:bottom-[35%]">
-        <Image src={`${basePath}/icons/chat.png`} alt="Chat" width={54} height={43} className="w-7 md:w-10"/>
+        <Image src={`${basePath}images/icons/chat.png`} alt="Chat" width={54} height={43} className="w-7 md:w-10"/>
       </span>
     </section>
     {
