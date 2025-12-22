@@ -125,9 +125,9 @@ export default function StudentComponent({
           }
         })
 
-        updateLoader(false);
-
         if (!response.ok) {
+          updateLoader(false);
+
           const err = await response.json();
 
           if(err.error) {
@@ -155,9 +155,7 @@ export default function StudentComponent({
         const data = await response.json();
 
         if(data.success) {
-          const display_message = data.result.display_message;
-
-          alert(display_message);
+          window.location.href = "https://app.classtym.com/";
         }
 
         setStudentRegistrationForm({
@@ -193,7 +191,7 @@ export default function StudentComponent({
   return (
     <>
     <Header showLoader={showLoader} />
-    <section className="container max-w-full flex flex-col lg:flex-row gap-10 lg:gap-5 py-25 lg:py-20 px-5 md:px-5 relative overflow-hidden">
+    <section className="container max-w-full flex flex-col lg:flex-row gap-10 lg:gap-5 py-25 lg:py-20 px-5 md:px-5 top-20 relative overflow-hidden">
       <div className="absolute w-[90%] lg:w-[46%] xl:w-[45%] top-10 translate-x-1/2 lg:translate-x-0 right-1/2 lg:right-5 xl:right-20 flex flex-col gap-2 md:gap-5 rounded-3xl px-5 pt-5 md:pt-8 pb-5 lg:pb-5 xl:pb-15 border-2 border-[#EFEFEF] z-0">
           <h1 className="text-4xl md:text-6xl lg:text-4xl xl:text-7xl font-bold flex gap-5">Online <span className="flex flex-col gap-1">Tuitions <Image src={`${basePath}images/icons/underline-stroke.svg`} alt="Underline Stroke" width={300} height={5} className="px-5 w-55" /></span></h1>
           <h2 className="text-2xl xl:text-5xl leading-tight pr-15 md:pr-0">From <span className="text-[#507FCB]">India's Best</span> Tutors, Right at Home!</h2>
@@ -306,7 +304,7 @@ export default function StudentComponent({
       )
       }
 
-      <div className="w-full lg:w-1/2 px-5">
+      <div className="w-full lg:w-1/2 md:px-5">
         <div className="flex flex-col gap-5 p-5 rounded-3xl border-2 border-[#EFEFEF] relative z-1 mt-5 lg:mt-38 xl:mt-65 md:mx-5 lg:mx-0 lg:w-sm xl:w-2/3 bg-white">
           <h2 className="text-[#D3344D] text-2xl font-semibold">Fill the details below!</h2>
           <form className="flex flex-col text-[#1B3867]" autoComplete="off" onSubmit={studentRegistrationSubmit}>
@@ -352,8 +350,8 @@ export default function StudentComponent({
               </div>
             </div>
             <div className="flex justify-center items-center">
-              <div className="rounded-xl p-[0.20rem] border-[1.3px] border-[#E43955] text-white shadow-[0_2px_4px_0_rgba(0,0,0,0.25)]">
-                <button type="submit" className="rounded-lg default-bg px-8 py-4 text-xl md:text-lg flex items-center justify-center gap-5 cursor-pointer">
+              <div className="rounded-xl p-[0.20rem] border-[1.3px] border-[#E43955] text-white transition duration-200 hover:shadow-[0_2px_4px_0_rgba(0,0,0,0.25)]">
+                <button type="submit" className="rounded-lg default-bg px-8 py-3 text-xl md:text-lg flex items-center justify-center gap-5 cursor-pointer">
                   Register
                   <svg width={18 * 1.7} height={18} viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <polyline points="14 4, 22 12, 14 20" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="1" />
