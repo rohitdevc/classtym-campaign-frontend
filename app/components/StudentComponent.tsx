@@ -91,7 +91,11 @@ export default function StudentComponent({
     });
     
     const handleChange = () => {
-      const fullNumber = iti.getNumber();
+      const dialCode = iti.getSelectedCountryData().dialCode;
+      const nationalNumber = input.value;
+      
+      const fullNumber = `+${dialCode}${nationalNumber}`;
+
       setStudentRegistrationForm((prev) => ({...prev, student_mobile_number: fullNumber,}));
     };
     
@@ -136,7 +140,7 @@ export default function StudentComponent({
             setErrors({student_learning_subjects: 'Please enter the subjects you want to learn'});
             studentTeachingSubjectsRef.current?.focus();
             return;
-        }
+        }        
 
         updateLoader(true);
 

@@ -74,7 +74,11 @@ export default function ExpertComponent({
     });
     
     const handleChange = () => {
-      const fullNumber = iti.getNumber();
+      const dialCode = iti.getSelectedCountryData().dialCode;
+      const nationalNumber = input.value;
+      
+      const fullNumber = `+${dialCode}${nationalNumber}`;
+      
       setExpertRegistrationForm((prev) => ({...prev, expert_mobile_number: fullNumber,}));
     };
     
