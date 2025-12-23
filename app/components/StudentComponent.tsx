@@ -400,7 +400,7 @@ export default function StudentComponent({
       studentWhyJoinUs && studentWhyJoinUs.length > 0 && (
       <section className="container max-w-full bg-[#f9fbff] flex flex-col justify-center items-center py-10 mt-20 px-3 xl:px-15 gap-15 font-semibold relative" ref={StudentBenefitsRef}>
         <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer" onClick={() => scrollWithOffset(StudentBenefitsRef)}>
-          <Image src={`${basePath}images/icons/circle-arrow.png`} alt="Circle Arrow" width={100} height={100} className="w-13" />
+          <Image src={`${basePath}images/icons/circle-arrow.png`} alt="Circle Arrow" width={100} height={100} className="w-10" />
         </span>
         <h2 className="text-3xl md:text-4xl">Why Join ClassTym ?</h2>
         <div className="flex flex-col md:flex-row md:flex-wrap justify-center items-stretch gap-5">
