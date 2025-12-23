@@ -8,8 +8,9 @@ import nl2br from "nl2br";
 import Header from "./header";
 import Footer from "./footer";
 
-import "react-phone-input-2/lib/style.css";
-import PhoneInput from "react-phone-input-2";
+import intlTelInput from "intl-tel-input";
+import "intl-tel-input/build/css/intlTelInput.css";
+
 import { isEmail, isEmpty, isMobilePhone } from 'validator';
 
 import {
@@ -36,6 +37,7 @@ export default function ExpertComponent({
   
   const [ip, setIp] = useState("");
   const [showLoader, updateLoader] = useState(false);
+  const [isPhoneFocused, setIsPhoneFocused] = useState(false);
 
   const [expertRegistrationForm, setExpertRegistrationForm] = useState<ExpertRegistration>({
     expert_full_name: '',
@@ -61,6 +63,28 @@ export default function ExpertComponent({
   const expertMobileNumberRef = useRef<HTMLInputElement | null>(null);
   const expertEmailIDRef = useRef<HTMLInputElement | null>(null);
   const expertTeachingSubjectsRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    const input = expertMobileNumberRef.current;
+    if (!input) return;
+    const iti = intlTelInput(input, {
+      initialCountry: "in",
+      separateDialCode: true,
+      nationalMode: true,
+    });
+    
+    const handleChange = () => {
+      const fullNumber = iti.getNumber();
+      setExpertRegistrationForm((prev) => ({...prev, expert_mobile_number: fullNumber,}));
+    };
+    
+    input.addEventListener("input", handleChange);
+    
+    return () => {
+      input.removeEventListener("input", handleChange);
+      iti.destroy();
+    };
+  }, []);
 
   const refMap: Record<string, React.RefObject<HTMLInputElement | null>> = {
     expert_full_name: expertFullNameRef,
@@ -171,7 +195,7 @@ export default function ExpertComponent({
   const scrollWithOffset = (ref: React.RefObject<HTMLDivElement | null>) => {
       if (!ref.current) return;
       
-      const offset = 0;
+      const offset = 75;
       
       const top = ref.current.getBoundingClientRect().top + window.pageYOffset - offset;
       
@@ -183,7 +207,7 @@ export default function ExpertComponent({
     <Header showLoader={showLoader} />
     <section className="container max-w-full flex flex-col lg:flex-row gap-10 lg:gap-5 py-25 lg:py-10 px-5 md:px-5 top-20 relative overflow-hidden">
       <div className="absolute w-[90%] lg:w-[46%] xl:w-[48%] top-10 translate-x-1/2 lg:translate-x-0 right-1/2 lg:right-5 xl:right-5 flex flex-col gap-2 md:gap-5 rounded-3xl px-5 pt-5 md:pt-8 pb-5 lg:pb-5 xl:pb-15 border-2 border-[#EFEFEF] z-0">
-          <h1 className="text-4xl md:text-6xl lg:text-4xl xl:text-7xl font-bold flex gap-5">Teach <span className="flex flex-col gap-1">Online <Image src={`${basePath}images/icons/underline-stroke.svg`} alt="Underline Stroke" width={300} height={5} className="px-5 w-55" /></span></h1>
+          <h1 className="text-4xl md:text-6xl lg:text-4xl xl:text-7xl font-bold flex gap-2">Teach <span className="relative"><span>Online</span> <Image src={`${basePath}images/icons/underline-stroke.svg`} alt="Underline Stroke" width={300} height={5} className="absolute left-0 h-2 md:h-4" /></span></h1>
           <h2 className="text-xl md:text-2xl xl:text-4xl">Increase your income by <span className="text-[#507FCB]">2x</span></h2>
       </div>
       {
@@ -242,7 +266,7 @@ export default function ExpertComponent({
       }
 
       <div className="w-full lg:w-1/2 md:px-5">
-        <div className="flex flex-col gap-5 p-5 rounded-3xl border-2 border-[#EFEFEF] relative z-1 lg:mt-38 xl:mt-55 md:mx-5 lg:mx-0 lg:w-2/3 bg-white">
+        <div className="flex flex-col gap-5 p-5 rounded-3xl border-2 border-[#EFEFEF] relative z-1 lg:mt-38 xl:mt-50 md:mx-5 lg:mx-0 lg:w-2/3 bg-white">
           <h2 className="text-[#D3344D] text-2xl font-semibold">Fill the details below!</h2>
           <form className="flex flex-col text-[#1B3867]" autoComplete="off" onSubmit={expertRegistrationSubmit}>
             <div className="flex flex-col">
@@ -256,13 +280,9 @@ export default function ExpertComponent({
             </div>
             <div className="flex flex-col">
               <div className="relative">
-                <PhoneInput country={"in"} disableCountryCode={false} countryCodeEditable={false} value={expertRegistrationForm.expert_mobile_number} onChange={(expert_mobile_number) => setExpertRegistrationForm((prev) => ({...prev, expert_mobile_number: `+${expert_mobile_number}`}))} inputProps={{
-                  name: "expert_mobile_number",
-                  id: "expert_mobile_number",
-                  ref: expertMobileNumberRef,
-                  placeholder: ""
-                }} containerClass="w-full [&_.selected-flag]:hover:!bg-transparent" inputClass="peer !w-full !h-14 !pr-3 !pt-5 !pb-1 !rounded-lg !border-2 !border-[#C7C7C7] focus:!border-[#1B3867] focus:!outline-none" buttonClass="!border-2 !border-[#C7C7C7] peer-hover:!border-[#C7C7C7] peer-focus:!border-[#1B3867] !bg-transparent !rounded-l-lg" />
-                <label htmlFor="expert_mobile_number" className={`absolute left-20 text-[#91989F] transition-all duration-200 ${expertRegistrationForm.expert_mobile_number ? 'top-3 text-xs' : 'top-2/3 -translate-y-2/3 text-md md:text-sm' }`}>Phone Number</label>
+                <input type="tel" id="expert_mobile_number" name="expert_mobile_number" inputMode="numeric" ref={expertMobileNumberRef} onFocus={() => setIsPhoneFocused(true)} onBlur={(e) => setIsPhoneFocused(!!e.target.value)} className="peer !w-full !h-14 !pl-20 !pr-3 !pt-1 !pb-1 !rounded-lg !border-2 !border-[#C7C7C7] focus:!border-[#1B3867] focus:!outline-none" />
+
+                <label htmlFor="expert_mobile_number" className={`absolute left-20 text-[#91989F] transition-all duration-200 ${isPhoneFocused || expertRegistrationForm.expert_mobile_number ? "top-1 text-xs": "top-1/2 -translate-y-1/2 text-md md:text-sm"}`}>Phone Number</label>
               </div>
               <div className="text-red-700 -mt-1 mb-1 h-5">
                 <span className={`text-xs transition-all duration-200 ${errors.expert_mobile_number ? "opacity-100" : "opacity-0"}`}>{errors.expert_mobile_number}</span>
@@ -300,10 +320,6 @@ export default function ExpertComponent({
         </div>
       </div>
 
-      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 cursor-pointer" onClick={() => scrollWithOffset(ExpertBenefitsRef)}>
-        <Image src={`${basePath}images/icons/circle-arrow.png`} alt="Circle Arrow" width={100} height={100} className="w-13" />
-      </span>
-
       <span className="absolute -right-10 md:-right-15 bottom-[60%] lg:bottom-[35%]">
         <Image src={`${basePath}images/icons/pie-chart.png`} alt="Pie Chart" width={300} height={300} className="w-25 md:w-40"/>
       </span>
@@ -314,7 +330,10 @@ export default function ExpertComponent({
     </section>
     {
       expertWhyJoinUs && expertWhyJoinUs.length > 0 && (
-      <section className="container max-w-full bg-[#f9fbff] flex flex-col justify-center items-center py-10 px-3 xl:px-15 gap-15 font-semibold" ref={ExpertBenefitsRef}>
+      <section className="container max-w-full bg-[#f9fbff] flex flex-col justify-center items-center py-10 mt-20 px-3 xl:px-15 gap-15 font-semibold relative" ref={ExpertBenefitsRef}>
+        <span className="absolute -top-8 left-1/2 -translate-x-1/2 cursor-pointer" onClick={() => scrollWithOffset(ExpertBenefitsRef)}>
+          <Image src={`${basePath}images/icons/circle-arrow.png`} alt="Circle Arrow" width={100} height={100} className="w-13" />
+        </span>
         <h2 className="text-3xl md:text-4xl">Why Join ClassTym ?</h2>
         <div className="flex flex-col md:flex-row md:flex-wrap justify-center items-stretch gap-5">
           {

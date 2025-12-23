@@ -32,3 +32,11 @@ body {
   color: var(--foreground);
   font-family: sans-serif;
 }
+
+.iti {
+  width: 100%;
+}
+
+.iti .iti__selected-dial-code {
+  margin-left: 0px !important;
+}

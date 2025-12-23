@@ -36,12 +36,12 @@ export default function Footer() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="https://www.instagram.com/classtym_/" target="_blank">
+                            <Link href="https://www.instagram.com/classtymconnect/" target="_blank">
                                 <Image src={`${basePath}images/icons/instagram.png`} alt="Instagram" width={35} height={35} className="w-12 md:w-10" />
                             </Link>
                         </li>
                         <li>
-                            <Link href="https://www.facebook.com/classtym/" target="_blank">
+                            <Link href="https://www.facebook.com/profile.php?id=61568890227768" target="_blank">
                                 <Image src={`${basePath}images/icons/facebook.png`} alt="Facebook" width={35} height={35} className="w-12 md:w-10" />
                             </Link>
                         </li>
