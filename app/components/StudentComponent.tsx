@@ -334,7 +334,7 @@ export default function StudentComponent({
       }
 
       <div className="w-full lg:w-1/2 md:px-5">
-        <div className="flex flex-col gap-5 p-5 rounded-3xl border-2 border-[#EFEFEF] relative z-1 mt-5 lg:mt-38 xl:mt-65 md:mx-5 lg:mx-0 lg:w-sm xl:w-2/3 bg-white">
+        <div className="flex flex-col gap-5 p-5 rounded-3xl border-2 border-[#EFEFEF] relative z-1 mt-5 lg:mt-38 xl:mt-60 md:mx-5 lg:mx-0 lg:w-sm xl:w-2/3 bg-white">
           <h2 className="text-[#D3344D] text-2xl font-semibold">Fill the details below!</h2>
           <form className="flex flex-col text-[#1B3867]" autoComplete="off" onSubmit={studentRegistrationSubmit}>
             <div className="flex flex-col">
@@ -399,7 +399,7 @@ export default function StudentComponent({
     {
       studentWhyJoinUs && studentWhyJoinUs.length > 0 && (
       <section className="container max-w-full bg-[#f9fbff] flex flex-col justify-center items-center py-10 mt-20 px-3 xl:px-15 gap-15 font-semibold relative" ref={StudentBenefitsRef}>
-        <span className="absolute -top-8 left-1/2 -translate-x-1/2 cursor-pointer" onClick={() => scrollWithOffset(StudentBenefitsRef)}>
+        <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer" onClick={() => scrollWithOffset(StudentBenefitsRef)}>
           <Image src={`${basePath}images/icons/circle-arrow.png`} alt="Circle Arrow" width={100} height={100} className="w-13" />
         </span>
         <h2 className="text-3xl md:text-4xl">Why Join ClassTym ?</h2>

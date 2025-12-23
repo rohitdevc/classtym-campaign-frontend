@@ -335,8 +335,8 @@ export default function ExpertComponent({
     {
       expertWhyJoinUs && expertWhyJoinUs.length > 0 && (
       <section className="container max-w-full bg-[#f9fbff] flex flex-col justify-center items-center py-10 mt-20 px-3 xl:px-15 gap-15 font-semibold relative" ref={ExpertBenefitsRef}>
-        <span className="absolute -top-8 left-1/2 -translate-x-1/2 cursor-pointer" onClick={() => scrollWithOffset(ExpertBenefitsRef)}>
-          <Image src={`${basePath}images/icons/circle-arrow.png`} alt="Circle Arrow" width={100} height={100} className="w-13" />
+        <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer" onClick={() => scrollWithOffset(ExpertBenefitsRef)}>
+          <Image src={`${basePath}images/icons/circle-arrow.png`} alt="Circle Arrow" width={100} height={100} className="w-10" />
         </span>
         <h2 className="text-3xl md:text-4xl">Why Join ClassTym ?</h2>
         <div className="flex flex-col md:flex-row md:flex-wrap justify-center items-stretch gap-5">
@@ -345,7 +345,7 @@ export default function ExpertComponent({
             <div className="flex flex-col items-center justify-center text-center gap-1 md:gap-0 bg-[#f3f7ff] w-full md:w-[48%] xl:w-[32%] px-5 py-4 border border-[#0d99ff]/40 rounded-xl" key={key}>
               <Image src={why_join_us.why_join_us_icon} alt={why_join_us.why_join_us_caption} width={100} height={100} className="w-18 lg:w-20" />
               <p className="text-2xl lg:text-[2rem] text-[#507fcb]">{why_join_us.why_join_us_caption}</p>
-              <p className="text-xl">{parse(nl2br(why_join_us.why_join_us_description))}</p>
+              <p className="text-xl font-medium">{parse(nl2br(why_join_us.why_join_us_description))}</p>
             </div>
           ))
           }
