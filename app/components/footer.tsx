@@ -36,24 +36,24 @@ export default function Footer() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="https://www.instagram.com/classtymconnect/" target="_blank">
+                            <Link href="https://www.instagram.com/classtym_/" target="_blank">
                                 <Image src={`${basePath}images/icons/instagram.png`} alt="Instagram" width={35} height={35} className="w-12 md:w-10" />
                             </Link>
                         </li>
                         <li>
-                            <Link href="https://www.facebook.com/profile.php?id=61568890227768" target="_blank">
+                            <Link href="https://www.facebook.com/profile.php?id=61568508999980" target="_blank">
                                 <Image src={`${basePath}images/icons/facebook.png`} alt="Facebook" width={35} height={35} className="w-12 md:w-10" />
                             </Link>
                         </li>
                         <li>
-                            <Link href="https://m.youtube.com/channel/UCHTvDrarwY0Eh-MMxmtcV7Q/featured" target="_blank">
+                            <Link href="https://www.youtube.com/channel/UCHTvDrarwY0Eh-MMxmtcV7Q/featured" target="_blank">
                                 <Image src={`${basePath}images/icons/youtube.png`} alt="YouTube" width={35} height={35} className="w-12 md:w-10" />
                             </Link>
                         </li>
                     </ul>
                 </div>
                 <div className="flex flex-col gap-5">
-                    <Link href="tel:+917065060222" className="flex gap-3 items-center">
+                    <Link href="https://wa.me/917065060222" target="_blank" className="flex gap-3 items-center">
                         <Image src={`${basePath}images/icons/phone.png`} alt="Phone" width={30} height={30} className="w-4 h-4" />
                         <span>+91 70650 60222</span>
                     </Link>
