@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { GoDash } from "react-icons/go";
 import { FaRegCopyright } from "react-icons/fa";
+import { IoMdMail } from "react-icons/io";
+import { IoLogoWhatsapp } from "react-icons/io";
 
 const DoubleGradientArrows = ({ size = 24 }) => (
     <svg width={size * 1.7} height={size} viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,8 +24,29 @@ export default function Footer() {
     const basePath = process.env.NEXT_PUBLIC_PATH;
 
     return (
-        <footer className="container max-w-full flex flex-col xl:flex-row gap-8 md:gap-10 xl:gap-0 items-center py-10 px-5 md:px-10">
-            <div className="w-full xl:w-[70%] flex flex-col md:flex-row gap-10 md:gap-30 md:items-center lg:justify-center xl:justify-start font-semibold">
+        <>
+        <div className="flex flex-col sm:flex-row gap-5 justify-center items-center py-5 sm:py-15">
+            <Link href="https://wa.me/917065060222" target="_blank" className="flex gap-3 items-center bg-[#F5F5F5] px-3 py-2 rounded-full border border-[#E2E2E2]">
+                <IoLogoWhatsapp size={30} fill="#25D366" />
+                <span className="flex gap-2 items-center">
+                    +91 70650 60222
+                    <svg width={18 * 1.7} height={18} viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="14 4, 22 12, 14 20" stroke="black" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="1" />
+                    </svg>
+                </span>
+            </Link>
+            <Link href="mailto:info@classtym.com" className="flex gap-3 items-center bg-[#F5F5F5] px-3 py-2 rounded-full border border-[#E2E2E2]">
+                <IoMdMail size={30} />
+                <span className="flex gap-2 items-center">
+                    info@classtym.com
+                    <svg width={18 * 1.7} height={18} viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="14 4, 22 12, 14 20" stroke="black" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="1" />
+                    </svg>
+                </span>
+            </Link>
+        </div>
+        <footer className="container max-w-full flex flex-col md:flex-row gap-8 md:gap-10 xl:gap-0 items-center py-10 px-5 md:px-20 bg-[#F9F9F9]">
+            <div className="w-full md:w-[40%] xl:w-[70%] flex flex-col md:flex-row gap-10 md:gap-30 md:items-center lg:justify-center xl:justify-start font-semibold">
                 <div className="flex flex-col gap-5">
                     <span className="flex items-center gap-2 text-xl md:text-lg">
                         <span className="bg-gradient-to-r from-[#E43955] to-[#507FCB] bg-clip-text text-transparent">Follow us on </span>
@@ -52,20 +75,11 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className="flex flex-col gap-5">
-                    <Link href="https://wa.me/917065060222" target="_blank" className="flex gap-3 items-center">
-                        <Image src={`${basePath}images/icons/phone.png`} alt="Phone" width={30} height={30} className="w-4 h-4" />
-                        <span>+91 70650 60222</span>
-                    </Link>
-                    <Link href="mailto:info@classtym.com" className="flex gap-3 items-center">
-                        <Image src={`${basePath}images/icons/email.png`} alt="Mail" width={30} height={30} className="w-5 h-4" />
-                        <span>info@classtym.com</span>
-                    </Link>
-                </div>
             </div>
-            <div className="w-full xl:w-[30%] flex lg:items-center lg:justify-center xl:justify-start xl:items-end text-md md:text-lg">
+            <div className="w-full md:w-[60%] xl:w-[30%] flex lg:items-center lg:justify-center xl:justify-start xl:items-end text-md md:text-lg">
                 <span className="flex items-center gap-1 text-[#5D6475]"><FaRegCopyright size={12} className="mt-[3px]" /> {new Date().getFullYear()} <GoDash /> Warwick Technologies Pvt. Ltd.</span>
             </div>
         </footer>
+        </>
     )
 }

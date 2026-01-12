@@ -334,7 +334,7 @@ export default function ExpertComponent({
     </section>
     {
       expertWhyJoinUs && expertWhyJoinUs.length > 0 && (
-      <section className="container max-w-full bg-[#f9fbff] flex flex-col justify-center items-center py-10 mt-20 px-3 xl:px-15 gap-15 font-semibold relative" ref={ExpertBenefitsRef}>
+      <section className="container max-w-full bg-[#f9fbff] flex flex-col justify-center items-center py-20 mt-20 px-3 xl:px-15 gap-15 font-semibold relative" ref={ExpertBenefitsRef}>
         <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer" onClick={() => scrollWithOffset(ExpertBenefitsRef)}>
           <Image src={`${basePath}images/icons/circle-arrow.png`} alt="Circle Arrow" width={100} height={100} className="w-10" />
         </span>
