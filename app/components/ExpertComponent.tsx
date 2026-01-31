@@ -216,56 +216,111 @@ export default function ExpertComponent({
       </div>
       {
         expertConversation && expertConversation.length === 2 && (
-        <div className="w-full lg:w-1/2 flex flex-col gap-8 md:px-15 lg:px-5 py-5 relative mt-20 md:mt-40 lg:mt-0">
-          <span className="absolute left-0 md:left-[98%] lg:left-[97%] xl:left-[90%] top-[20%] md:top-0">
-            <Image src={`${basePath}images/icons/star.png`} alt="Star" width={50} height={50} className="w-[0.9rem]" />
-          </span>
-          <span className="absolute top-[25%] left-[60%] md:left-[50%]">
-            <Image src={`${basePath}images/icons/conversation-string.png`} alt="Conversation String" width={504} height={643} className="w-30 md:w-35" />
-          </span>
-          <div className="flex gap-1 md:gap-3 relative justify-end">
-            <span className="absolute bottom-10 left-1/2 md:left-[55%]">
-              <Image src={`${basePath}images/icons/plus.png`} alt="Plus" width={50} height={50} className="w-3" />
-            </span>
-            <p className="text-sm xl:text-lg flex items-center px-4 border border-[#DEEAFF] rounded-t-2xl rounded-bl-2xl rounded-br-sm h-12 shadow-[0_5px_4px_0_rgba(13,153,255,0.15)] font-bold lg:font-normal">{expertConversation[0].conversation_speech}</p>
-            <div className="rounded-xl p-1 relative inline-block w-50 xl:w-65">
-              <span className="absolute top-0 left-0 h-10 w-10 md:h-13 md:w-13 border-t-3 border-l-3 border-[#D3344D] rounded-tl-xl" />
-              <span className="absolute bottom-0 right-0 h-10 w-10 md:h-13 md:w-13 border-b-3 border-r-3 border-[#D3344D] rounded-br-xl" />
-              <Image src={expertConversation[0].conversation_image} alt="ClassTym Expert" width={758} height={504} className="rounded-lg w-full"  />
+          <>
+          <div className="w-full lg:w-1/2 flex flex-col gap-8 md:px-15 lg:px-2 xl:px-15 py-5 mt-20 md:mt-40 lg:mt-0 z-1">
+            <div className="p-1 border-3 border-[#E7E7E7] rounded-2xl shadow-[0_0_4px_0_rgba(0,0,0,0.25)] relative">
+              <Image src={`${basePath}images/expert/student.png`} width={600} height={440} alt="Student" className="rounded-xl z-0 w-full h-75 sm:h-90 md:h-110 lg:h-125 xl:h-100 object-cover" />
+
+              <Image src={`${basePath}images/expert/expert-1.png`} width={300} height={200} alt="Expert" className="rounded-xl z-1 absolute top-3 left-3 w-25 sm:w-40 md:w-60 lg:w-50" />
+
+              <div className="rounded-lg text-white z-1 absolute top-22 left-3 sm:top-32 md:top-45 lg:top-3 lg:left-[unset] lg:right-3 flex gap-1 items-center justify-center bg-[#e43955] px-2 py-2 text-xs lg:text-sm">
+                <Image src={`${basePath}images/icons/group-classes.svg`} width={20} height={20} className="w-5 lg:w-7" alt="Group Classes" />
+                <span>Group Classes</span>
+              </div>
+
+              <div className="rounded-lg text-white z-1 absolute top-3 lg:top-25 right-3 flex gap-1 items-center justify-center bg-[#507fcb] px-2 py-2 text-xs lg:text-sm">
+                <Image src={`${basePath}images/icons/one-on-one-session.svg`} width={20} height={20} className="w-5 lg:w-7" alt="Group Classes" />
+                <span>1:1 Session</span>
+              </div>
+
+              <div className="rounded-lg text-white z-1 absolute top-33 sm:top-45 md:top-60 left-10 lg:top-41 lg:left-5 flex gap-1 items-center justify-center bg-[#232222] px-2 py-2 text-xs lg:text-sm">
+                <Image src={`${basePath}images/icons/live-courses.svg`} width={20} height={20} className="w-5 lg:w-7" alt="Group Classes" />
+                <span>Live Courses</span>
+              </div>
+
+              <div className="rounded-lg text-white z-1 absolute top-46 sm:top-58 md:top-75 left-20 lg:top-59 lg:left-15 flex gap-1 items-center justify-center bg-[#10a957] px-2 py-2 text-xs lg:text-sm">
+                <Image src={`${basePath}images/icons/flexible.svg`} width={20} height={20} className="w-5 lg:w-7" alt="Group Classes" />
+                <div className="flex flex-col">
+                  <span className="opacity-75">Flexible</span>
+                  <span>Your Schedule</span>
+                </div>
+              </div>
+
+              <div className="rounded-lg text-white z-1 absolute top-63 sm:top-75 md:top-95 left-30 lg:top-80 lg:left-25 flex gap-1 items-center justify-center bg-[#601a1a] px-2 py-2 text-xs lg:text-sm">
+                <Image src={`${basePath}images/icons/instant-classroom.svg`} width={20} height={20} className="w-7" alt="Group Classes" />
+                <span>Instant Classroom</span>
+              </div>
+
             </div>
+
+            {
+              expertBenefits && expertBenefits.length > 0 && (
+              <ul className="flex flex-col font-medium gap-2 md:gap-[1rem] md:px-30 lg:px-0 text-lg font-medium">
+                {
+                  expertBenefits.map((benefit, key) => (
+                  <li className="flex items-center gap-2 rounded-l-4xl rounded-r-xl w-fit p-2 shadow-[0_0_8px_rgba(112,112,112,0.35)]" key={key}>
+                    <Image src={`${basePath}images/icons/green-check.png`} alt="Green Check" width={88} height={88} className="w-6 md:w-5" />
+                    {benefit.benefit_caption}
+                  </li>
+                ))
+                }
+              </ul>
+            ) 
+            }
           </div>
-          <div className="flex flex-col gap-3 relative w-1/2">
-            <span className="absolute left-12 top-8">
-              <Image src={`${basePath}images/icons/sparkle-one.png`} alt="Sparkle" width={50} height={50} className="w-5" />
+
+
+          <div className="w-full lg:w-1/2 flex flex-col gap-8 md:px-15 py-5 relative mt-20 md:mt-40 lg:mt-0 hidden">
+            <span className="absolute left-0 md:left-[98%] lg:left-[97%] xl:left-[90%] top-[20%] md:top-0">
+              <Image src={`${basePath}images/icons/star.png`} alt="Star" width={50} height={50} className="w-[0.9rem]" />
             </span>
-            <span className="absolute left-2 bottom-0">
-              <Image src={`${basePath}images/icons/sparkle-two.png`} alt="Sparkle" width={50} height={50} className="w-5" />
+            <span className="absolute top-[25%] left-[60%] md:left-[50%]">
+              <Image src={`${basePath}images/icons/conversation-string.png`} alt="Conversation String" width={504} height={643} className="w-30 md:w-35" />
             </span>
-            <span className="absolute right-0 bottom-15">
-              <Image src={`${basePath}images/icons/sparkle-three.png`} alt="Sparkle" width={50} height={50} className="w-8" />
-            </span>
-            <div className="flex justify-end md:justify-start lg:justify-end sm:mx-auto lg:mx-0">
-              <p className="text-sm xl:text-lg flex items-center shadow-[0_5px_4px_0_rgba(13,153,255,0.15)] px-4 bg-[#507fcb] text-white rounded-t-2xl rounded-br-2xl rounded-bl-sm w-fit h-12">{expertConversation[1].conversation_speech}</p>
+            <div className="flex gap-1 md:gap-3 relative justify-end">
+              <span className="absolute bottom-10 left-1/2 md:left-[55%]">
+                <Image src={`${basePath}images/icons/plus.png`} alt="Plus" width={50} height={50} className="w-3" />
+              </span>
+              <p className="text-sm xl:text-lg flex items-center px-4 border border-[#DEEAFF] rounded-t-2xl rounded-bl-2xl rounded-br-sm h-12 shadow-[0_5px_4px_0_rgba(13,153,255,0.15)] font-bold lg:font-normal">{expertConversation[0].conversation_speech}</p>
+              <div className="rounded-xl p-1 relative inline-block w-50 xl:w-65">
+                <span className="absolute top-0 left-0 h-10 w-10 md:h-13 md:w-13 border-t-3 border-l-3 border-[#D3344D] rounded-tl-xl" />
+                <span className="absolute bottom-0 right-0 h-10 w-10 md:h-13 md:w-13 border-b-3 border-r-3 border-[#D3344D] rounded-br-xl" />
+                <Image src={expertConversation[0].conversation_image} alt="ClassTym Expert" width={758} height={504} className="rounded-lg w-full"  />
+              </div>
             </div>
-            <div className="w-45 h-45 xl:w-60 xl:h-60 overflow-hidden rounded-full border-[#D3344D] border-b-4">
-              <Image src={expertConversation[1].conversation_image} alt="ClassTym Student" width={948} height={864} className="scale-135 object-cover"  />
+            <div className="flex flex-col gap-3 relative w-1/2">
+              <span className="absolute left-12 top-8">
+                <Image src={`${basePath}images/icons/sparkle-one.png`} alt="Sparkle" width={50} height={50} className="w-5" />
+              </span>
+              <span className="absolute left-2 bottom-0">
+                <Image src={`${basePath}images/icons/sparkle-two.png`} alt="Sparkle" width={50} height={50} className="w-5" />
+              </span>
+              <span className="absolute right-0 bottom-15">
+                <Image src={`${basePath}images/icons/sparkle-three.png`} alt="Sparkle" width={50} height={50} className="w-8" />
+              </span>
+              <div className="flex justify-end md:justify-start lg:justify-end sm:mx-auto lg:mx-0">
+                <p className="text-sm xl:text-lg flex items-center shadow-[0_5px_4px_0_rgba(13,153,255,0.15)] px-4 bg-[#507fcb] text-white rounded-t-2xl rounded-br-2xl rounded-bl-sm w-fit h-12">{expertConversation[1].conversation_speech}</p>
+              </div>
+              <div className="w-45 h-45 xl:w-60 xl:h-60 overflow-hidden rounded-full border-[#D3344D] border-b-4">
+                <Image src={expertConversation[1].conversation_image} alt="ClassTym Student" width={948} height={864} className="scale-135 object-cover"  />
+              </div>
             </div>
+            {
+              expertBenefits && expertBenefits.length > 0 && (
+              <ul className="flex flex-col font-medium gap-2 md:gap-[1rem] md:px-30 lg:px-0 text-lg font-medium">
+                {
+                  expertBenefits.map((benefit, key) => (
+                  <li className="flex items-center gap-2 rounded-l-4xl rounded-r-xl w-fit p-2 shadow-[0_0_8px_rgba(112,112,112,0.35)]" key={key}>
+                    <Image src={`${basePath}images/icons/green-check.png`} alt="Green Check" width={88} height={88} className="w-6 md:w-5" />
+                    {benefit.benefit_caption}
+                  </li>
+                ))
+                }
+              </ul>
+            ) 
+            }
           </div>
-          {
-            expertBenefits && expertBenefits.length > 0 && (
-            <ul className="flex flex-col font-medium gap-2 md:gap-[1rem] md:px-30 lg:px-0 xl:mx-auto text-lg font-medium">
-              {
-                expertBenefits.map((benefit, key) => (
-                <li className="flex items-center gap-2 rounded-l-4xl rounded-r-xl w-fit p-3 shadow-[0_0_8px_rgba(112,112,112,0.35)]" key={key}>
-                  <Image src={`${basePath}images/icons/green-check.png`} alt="Green Check" width={88} height={88} className="w-6 md:w-5" />
-                  {benefit.benefit_caption}
-                </li>
-              ))
-              }
-            </ul>
-          ) 
-          }
-        </div>
+        </>
         )
       }
 

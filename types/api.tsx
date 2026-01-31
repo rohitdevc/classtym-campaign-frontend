@@ -35,6 +35,10 @@ export interface FeaturedExperts {
     expert_name: string;
     expert_education: string;
     expert_thumbnail: string;
+    expert_ratings: string;
+    expert_reviews: string;
+    expert_students: string;
+    expert_sessions: string;
 }
 
 export interface StudentBenefits {

@@ -10,6 +10,9 @@ import Footer from "./footer";
 
 import intlTelInput from "intl-tel-input";
 import "intl-tel-input/build/css/intlTelInput.css";
+import { LuGraduationCap } from "react-icons/lu";
+import { IoIosStar } from "react-icons/io";
+import { FaRupeeSign, FaPlay } from "react-icons/fa";
 
 import { isEmail, isEmpty, isMobilePhone } from 'validator';
 import {
@@ -225,34 +228,94 @@ export default function StudentComponent({
           <h1 className="text-4xl md:text-6xl lg:text-4xl xl:text-7xl font-bold flex gap-2">Online <span className="relative"><span>Tuitions</span> <Image src={`${basePath}images/icons/underline-stroke.svg`} alt="Underline Stroke" width={300} height={5} className="absolute left-0 h-2 md:h-4" /></span></h1>
           <h2 className="text-xl xl:text-5xl leading-snug md:leading-tight pr-15 md:pr-0">From <span className="text-[#507FCB]">India's Best</span> Tutors, Right at Home!</h2>
       </div>
-      <div className="w-full lg:w-1/2 relative mt-30 md:mt-40 lg:mt-0">
-          <span className="absolute -top-8 left-[16%]">
+      <div className="w-full lg:w-1/2 relative">
+          {
+            studentBenefits && studentBenefits.length > 0 && (
+            <div className="w-full hidden lg:block">
+              <ul className="flex flex-col font-medium gap-2 md:gap-[1rem] px-15 md:px-30 lg:px-0 sm:justify-center items-end sm:items-center text-lg font-medium z-1">
+                  {
+                    studentBenefits.map((benefit, key) => (
+                    <li className="relative flex items-center gap-2 rounded-4xl w-fit px-3 py-2 shadow-[0_0_8px_rgba(112,112,112,0.35)] before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:right-full before:w-[100vw] before:border-t before:border-dashed before:border-2 before:border-[#D7D7D7] bg-[#14CA74] text-white" key={key}>
+                        <Image src={`${basePath}images/icons/green-check.png`} alt="Green Check" width={88} height={88} className="w-6 md:w-5" />
+                        {benefit.benefit_caption}
+                    </li>
+                    ))
+                  }
+              </ul>
+            </div>
+          )
+          }
+          <span className="absolute top-[30%] left-0">
             <Image src={`${basePath}images/icons/sparkle-one.png`} alt="Sparkle" width={50} height={50} className="w-5" />
           </span>
 
-          <span className="absolute bottom-[20%] left-[5%]">
+          <span className="absolute top-[60%] left-0">
+            <FaPlay className="text-[#E43A56]" />
+          </span>
+
+          <span className="absolute bottom-[10%] right-0">
+            <FaPlay className="text-[#E43A56] scale-x-[-1]" />
+          </span>
+
+          <span className="absolute bottom-[20%] left-[5%] hidden">
             <Image src={`${basePath}images/icons/sparkle-three.png`} alt="Sparkle" width={50} height={50} className="w-7" />
           </span>
 
-          <span className="absolute top-[35%] right-10">
+          <span className="absolute top-[25%] right-35">
             <Image src={`${basePath}images/icons/star.png`} alt="Star" width={50} height={50} className="w-4" />
           </span>
 
-          <span className="absolute top-15 left-[51%]">
+          <span className="absolute top-15 left-[51%] hidden">
             <Image src={`${basePath}images/icons/sparkle-four.png`} alt="Sparkle" width={50} height={50} className="w-5" />
           </span>
         
-          <span className="absolute bottom-[10%] left-[0%] sm:left-[48%]">
+          <span className="absolute bottom-[10%] left-[0%] sm:left-[48%] hidden">
             <Image src={`${basePath}images/icons/plus.png`} alt="Plus" width={50} height={50} className="w-3" />
-          </span>
-
-          <span className="absolute bottom-15 sm:bottom-[43%] right-25 sm:right-5">
-            <Image src={`${basePath}images/icons/5-star.png`} alt="5 Star" width={50} height={50} className="w-45" />
           </span>
           {
             
           FeaturedExperts && FeaturedExperts.length > 0 && (
-            <div className="flex gap-3 sm:gap-5 md:px-10 lg:px-5 xl:px-[7.5%] justify-center z-1 relative">
+            <>
+            <div className="flex flex-col gap-3 sm:gap-5 md:px-10 lg:px-8 justify-center z-1 relative mt-30 md:mt-30">
+              {
+                FeaturedExperts.map((expert, key) => (
+                  <div className={`w-full flex lg:-mt-8 ${(key % 2) ? 'justify-end' : ''}`} style={{zIndex: key}}>
+                    <div className={`w-94 h-full bg-white border-3 border-[#EFEFEF] rounded-lg flex gap-2 p-1`}>
+                      <Image src={expert.expert_thumbnail} width="300" height="200" alt={expert.expert_name} className="w-30 h-max-full rounded-xl" />
+                      <div className="py-1 flex flex-col gap-1">
+                        <div className="flex gap-2 items-center">
+                          <h2 className="text-lg lg:text-xl font-bold">{expert.expert_name}</h2>
+                          <Image src={`${basePath}images/student/green-tick.svg`} width="20" height="20" alt="Verified" className="w-4" />
+                        </div>
+                        <div className="flex gap-1">
+                          <LuGraduationCap size={20} />
+                          <span className="text-sm lg:text-md">{expert.expert_education}</span>
+                        </div>
+                        <ul className="flex gap-3 mt-1">
+                          <li className="flex flex-col gap-0 text-xs md:text-sm">
+                            <span className="flex items-center gap-1 font-bold">{expert.expert_ratings} <IoIosStar className="text-[#EE9322]" /></span>
+                            <span>{expert.expert_reviews} Reviews</span>
+                          </li>
+                          <li className="flex flex-col gap-0 text-xs md:text-sm">
+                            <span className="flex items-center gap-1 font-bold">{expert.expert_students}</span>
+                            <span>Students</span>
+                          </li>
+                          <li className="flex flex-col gap-0 text-xs md:text-sm">
+                            <span className="flex items-center gap-1 font-bold">{expert.expert_sessions}</span>
+                            <span>Sessions</span>
+                          </li>
+                        </ul>
+                        <span className="flex items-center mt-3 gap-1 text-xs md:text-sm">
+                          <FaRupeeSign size={25} />
+                          <span className="select-none pointer-events-none font-bold blur-sm" aria-hidden="true">999.00</span> per hour</span>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+
+            <div className="flex gap-3 sm:gap-5 md:px-10 lg:px-5 xl:px-[7.5%] justify-center z-1 relative mt-30 md:mt-20 hidden">
               {
                 leftFeaturedExperts.length > 0 && (
                 <div className="flex flex-col gap-3 sm:gap-5">
@@ -313,25 +376,10 @@ export default function StudentComponent({
               )
               }
             </div>
+            </>
           )
           }
       </div>
-      {
-        studentBenefits && studentBenefits.length > 0 && (
-        <div className="absolute left-0 bottom-145 lg:bottom-10 w-full lg:w-1/2">
-          <ul className="flex flex-col font-medium gap-2 md:gap-[1rem] px-15 md:px-30 lg:px-0 sm:justify-center items-end sm:items-center text-lg font-medium z-1">
-              {
-                studentBenefits.map((benefit, key) => (
-                <li className="relative flex items-center gap-2 rounded-4xl w-fit px-3 py-2 shadow-[0_0_8px_rgba(112,112,112,0.35)] before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:right-full before:w-[100vw] before:border-t before:border-dashed before:border-2 before:border-[#D7D7D7]" key={key}>
-                    <Image src={`${basePath}images/icons/green-check.png`} alt="Green Check" width={88} height={88} className="w-6 md:w-5" />
-                    {benefit.benefit_caption}
-                </li>
-                ))
-              }
-          </ul>
-        </div>
-      )
-      }
 
       <div className="w-full lg:w-1/2 md:px-5">
         <div className="flex flex-col gap-5 p-5 rounded-3xl border-2 border-[#EFEFEF] relative z-1 mt-5 lg:mt-38 xl:mt-60 md:mx-5 lg:mx-0 lg:w-sm xl:w-2/3 bg-white">
