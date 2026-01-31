@@ -285,7 +285,7 @@ export default function StudentComponent({
                       <div className="py-1 flex flex-col gap-1">
                         <div className="flex gap-2 items-center">
                           <h2 className="text-lg lg:text-xl font-bold">{expert.expert_name}</h2>
-                          <Image src={`${basePath}images/student/green-tick.svg`} width="20" height="20" alt="Verified" className="w-4" />
+                          <Image src={`${basePath}images/icons/green-tick.svg`} width="20" height="20" alt="Verified" className="w-4" />
                         </div>
                         <div className="flex gap-1">
                           <LuGraduationCap size={20} />
