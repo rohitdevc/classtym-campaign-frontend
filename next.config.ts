@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  basePath: '/classtym-campaign',
-  assetPrefix: '/classtym-campaign',
+  basePath: '/',
+  assetPrefix: '/',
   turbopack: {
     root: __dirname,
   },
@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'staging.theneontree.in',
+        hostname: 'campaign.classtym.com',
         port: '',
         pathname: '/**'
       },
