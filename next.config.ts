@@ -1,8 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  basePath: '/',
-  assetPrefix: '/',
   turbopack: {
     root: __dirname,
   },
