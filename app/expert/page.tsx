@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ExpertComponent from "@/app/components/ExpertComponent";
+import ExpertComponent from "@/components/ExpertComponent";
 import { buildHeaders } from "@/lib/api";
 import { getMetaData, getBanner } from "@/lib/common";
 import { getExpertConversation, getExpertBenefits, getExpertWhyJoinUs } from "@/lib/expert";

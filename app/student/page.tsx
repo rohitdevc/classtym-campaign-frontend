@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import StudentComponent from "@/app/components/StudentComponent";
+import StudentComponent from "@/components/StudentComponent";
 import { buildHeaders } from "@/lib/api";
 import { getMetaData, getBanner } from "@/lib/common";
 import { getFeaturedExperts, getStudentBenefits, getStudentWhyJoinUs } from '@/lib/student';
