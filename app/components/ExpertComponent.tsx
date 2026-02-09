@@ -28,6 +28,22 @@ interface ExpertComponentProps {
   expertWhyJoinUs: ExpertWhyJoinUs[]
 }
 
+const getSeoParamsFromUrl = () => {
+  if (typeof window === "undefined") return undefined;
+
+  const params = new URLSearchParams(window.location.search);
+
+  const utm_source = params.get("utm_source");
+  const utm_medium = params.get("utm_medium");
+  const utm_campaign = params.get("utm_campaign");
+
+  if (utm_source || utm_medium || utm_campaign) {
+    return { utm_source, utm_medium, utm_campaign };
+  }
+
+  return undefined;
+};
+
 export default function ExpertComponent({
   expertConversation,
   expertBenefits,
@@ -44,7 +60,10 @@ export default function ExpertComponent({
     expert_mobile_number: '',
     expert_email_id: '',
     expert_teaching_subjects: '',
-    ip_address: ip
+    ip_address: ip,
+    utm_source: '',
+    utm_campaign: '',
+    utm_medium: ''
   });
   
   const [errors, setErrors] = useState<ExpertRegistrationFormErrors>({});
@@ -146,6 +165,20 @@ export default function ExpertComponent({
 
         expertRegistrationForm.ip_address = ip;
 
+        const seoParams = getSeoParamsFromUrl();
+        
+        if (seoParams?.utm_campaign) {
+          expertRegistrationForm.utm_campaign = seoParams.utm_campaign;
+        }
+
+        if (seoParams?.utm_medium) {
+          expertRegistrationForm.utm_medium = seoParams.utm_medium;
+        }
+
+        if (seoParams?.utm_source) {
+          expertRegistrationForm.utm_source = seoParams.utm_source;
+        }
+
         const response = await fetch(basePath + "api/expert/registration", {
           method: "POST",
           body: JSON.stringify(expertRegistrationForm),
@@ -192,7 +225,10 @@ export default function ExpertComponent({
             expert_email_id: '',
             expert_mobile_number: '+91',
             expert_teaching_subjects: '',
-            ip_address: ''
+            ip_address: '',
+            utm_source: '',
+            utm_campaign: '',
+            utm_medium: ''
         })
   }
 

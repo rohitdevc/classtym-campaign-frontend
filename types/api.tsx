@@ -29,6 +29,9 @@ export interface ExpertRegistration {
     expert_email_id: string;
     expert_teaching_subjects: string;
     ip_address: string;
+    utm_source?: string;
+    utm_campaign?: string;
+    utm_medium?: string;
 }
 
 export interface FeaturedExperts {
@@ -57,6 +60,9 @@ export interface StudentRegistration {
     student_email_id: string;
     student_learning_subjects: string;
     ip_address: string;
+    utm_source?: string;
+    utm_campaign?: string;
+    utm_medium?: string;
 }
 
 export interface TokenResponse {

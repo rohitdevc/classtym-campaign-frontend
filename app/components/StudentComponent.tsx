@@ -29,6 +29,22 @@ interface StudentComponentProps {
   studentWhyJoinUs: StudentWhyJoinUs[ ]
 }
 
+const getSeoParamsFromUrl = () => {
+  if (typeof window === "undefined") return undefined;
+
+  const params = new URLSearchParams(window.location.search);
+
+  const utm_source = params.get("utm_source");
+  const utm_medium = params.get("utm_medium");
+  const utm_campaign = params.get("utm_campaign");
+
+  if (utm_source || utm_medium || utm_campaign) {
+    return { utm_source, utm_medium, utm_campaign };
+  }
+
+  return undefined;
+};
+
 export default function StudentComponent({
   FeaturedExperts,
   studentBenefits,
@@ -47,7 +63,10 @@ export default function StudentComponent({
     student_mobile_number: '',
     student_email_id: '',
     student_learning_subjects: '',
-    ip_address: ''
+    ip_address: '',
+    utm_source: '',
+    utm_campaign: '',
+    utm_medium: ''
   });
   
   const [errors, setErrors] = useState<StudentRegistrationFormErrors>({});
@@ -149,6 +168,20 @@ export default function StudentComponent({
 
         studentRegistrationForm.ip_address = ip;
 
+        const seoParams = getSeoParamsFromUrl();
+        
+        if (seoParams?.utm_campaign) {
+          studentRegistrationForm.utm_campaign = seoParams.utm_campaign;
+        }
+
+        if (seoParams?.utm_medium) {
+          studentRegistrationForm.utm_medium = seoParams.utm_medium;
+        }
+
+        if (seoParams?.utm_source) {
+          studentRegistrationForm.utm_source = seoParams.utm_source;
+        }
+
         const response = await fetch(basePath + "api/student/registration", {
           method: "POST",
           body: JSON.stringify(studentRegistrationForm),
@@ -195,7 +228,10 @@ export default function StudentComponent({
             student_email_id: '',
             student_mobile_number: '+91',
             student_learning_subjects: '',
-            ip_address: ''
+            ip_address: '',
+            utm_source: '',
+            utm_campaign: '',
+            utm_medium: ''
         })
   }
 
@@ -279,7 +315,7 @@ export default function StudentComponent({
             <div className="flex flex-col gap-3 sm:gap-5 md:px-10 lg:px-8 justify-center z-1 relative mt-30 md:mt-30">
               {
                 FeaturedExperts.map((expert, key) => (
-                  <div className={`w-full flex lg:-mt-8 ${(key % 2) ? 'justify-end' : ''}`} style={{zIndex: key}}>
+                  <div className={`w-full flex lg:-mt-8 ${(key % 2) ? 'justify-end' : ''}`} style={{zIndex: key}} key={key}>
                     <div className={`w-94 h-full bg-white border-3 border-[#EFEFEF] rounded-lg flex gap-2 p-1`}>
                       <Image src={expert.expert_thumbnail} width="300" height="200" alt={expert.expert_name} className="w-30 h-max-full rounded-xl" />
                       <div className="py-1 flex flex-col gap-1">
