@@ -217,7 +217,7 @@ export default function ExpertComponent({
         const data = await response.json();
 
         if(data.success) {
-          window.location.href = "https://app.classtym.com/";
+          window.location.href = "https://www.app.classtym.com/register/tutor/";
         }
         
         setExpertRegistrationForm({
