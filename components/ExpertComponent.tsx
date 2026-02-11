@@ -7,6 +7,7 @@ import nl2br from "nl2br";
 
 import Header from "./header";
 import Footer from "./footer";
+import ThankYouPopUp from "./ThankYouPopUp";
 
 import intlTelInput from "intl-tel-input";
 import "intl-tel-input/build/css/intlTelInput.css";
@@ -53,6 +54,8 @@ export default function ExpertComponent({
   
   const [ip, setIp] = useState("");
   const [showLoader, updateLoader] = useState(false);
+  const [showPopUp, updatePopUp] = useState(false);
+  const [emailID, updateEmailID] = useState('');
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
 
   const [expertRegistrationForm, setExpertRegistrationForm] = useState<ExpertRegistration>({
@@ -217,7 +220,18 @@ export default function ExpertComponent({
         const data = await response.json();
 
         if(data.success) {
-          window.location.href = "https://www.app.classtym.com/register/tutor/";
+          const isMobile = typeof window !== "undefined" && /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+
+          if(isMobile) {
+            updatePopUp(true);
+            updateEmailID(expertRegistrationForm.expert_email_id);
+
+            setTimeout(() => {
+              window.location.href = "https://www.app.classtym.com/register/tutor/";
+            }, 10000)
+          } else {
+            window.location.href = "https://www.app.classtym.com/register/tutor/";
+          }
         }
         
         setExpertRegistrationForm({
@@ -245,6 +259,7 @@ export default function ExpertComponent({
   return (
     <>
     <Header showLoader={showLoader} />
+    <ThankYouPopUp showPopUp={showPopUp} emailID={emailID} />
     <section className="container max-w-full flex flex-col lg:flex-row gap-10 lg:gap-5 py-25 lg:py-10 px-5 md:px-5 top-20 relative overflow-hidden">
       <div className="absolute w-[90%] lg:w-[46%] xl:w-[48%] top-10 translate-x-1/2 lg:translate-x-0 right-1/2 lg:right-5 xl:right-5 flex flex-col gap-2 md:gap-5 rounded-3xl px-5 pt-5 md:pt-8 pb-5 lg:pb-5 xl:pb-15 border-2 border-[#EFEFEF] z-0">
           <h1 className="text-4xl md:text-6xl lg:text-4xl xl:text-7xl font-bold flex gap-2">Teach <span className="relative"><span>Online</span> <Image src={`${basePath}images/icons/underline-stroke.svg`} alt="Underline Stroke" width={300} height={5} className="absolute left-0 h-2 md:h-4" /></span></h1>

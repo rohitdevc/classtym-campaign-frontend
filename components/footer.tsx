@@ -46,7 +46,7 @@ export default function Footer() {
             </Link>
         </div>
         <footer className="container max-w-full flex flex-col md:flex-row gap-8 md:gap-10 xl:gap-0 items-center py-10 px-5 md:px-20 bg-[#F9F9F9]">
-            <div className="w-full md:w-[40%] xl:w-[70%] flex flex-col md:flex-row gap-10 md:gap-30 md:items-center lg:justify-center xl:justify-start font-semibold">
+            <div className="w-full md:w-[40%] xl:w-[70%] flex flex-col md:flex-row gap-10 md:gap-30 items-center justify-center xl:justify-start font-semibold">
                 <div className="flex flex-col gap-5">
                     <span className="flex items-center gap-2 text-xl md:text-lg">
                         <span className="bg-gradient-to-r from-[#E43955] to-[#507FCB] bg-clip-text text-transparent">Follow us on </span>
@@ -76,8 +76,9 @@ export default function Footer() {
                     </ul>
                 </div>
             </div>
-            <div className="w-full md:w-[60%] xl:w-[30%] flex lg:items-center lg:justify-center xl:justify-start xl:items-end text-md md:text-lg">
-                <span className="flex items-center gap-1 text-[#5D6475]"><FaRegCopyright size={12} className="mt-[3px]" /> {new Date().getFullYear()} <GoDash /> Warwick Technologies Pvt. Ltd.</span>
+            <div className="w-full md:w-[60%] xl:w-[30%] flex flex-col gap-2 items-center justify-center xl:justify-start xl:items-end text-md md:text-lg  text-[#5D6475]">
+                <span className="flex items-center gap-1"><FaRegCopyright size={12} className="mt-[3px]" /> {new Date().getFullYear()} <GoDash /> Warwick Technologies Pvt. Ltd.</span>
+                <span>Seeded by <Link href="https://www.theneontree.in" target="_blank" className="text-[#DA3568]">The Neon Tree</Link></span>
             </div>
         </footer>
         </>
