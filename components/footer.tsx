@@ -78,7 +78,7 @@ export default function Footer() {
             </div>
             <div className="w-full md:w-[60%] xl:w-[30%] flex flex-col gap-2 items-center justify-center xl:justify-start xl:items-end text-md md:text-lg  text-[#5D6475]">
                 <span className="flex items-center gap-1"><FaRegCopyright size={12} className="mt-[3px]" /> {new Date().getFullYear()} <GoDash /> Warwick Technologies Pvt. Ltd.</span>
-                <span>Seeded by <Link href="https://www.theneontree.in" target="_blank" className="text-[#DA3568]">The Neon Tree</Link></span>
+                <span className="hidden">Seeded by <Link href="https://www.theneontree.in" target="_blank" className="text-[#DA3568]">The Neon Tree</Link></span>
             </div>
         </footer>
         </>
