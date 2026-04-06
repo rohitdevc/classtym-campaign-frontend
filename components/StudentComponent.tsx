@@ -68,6 +68,7 @@ export default function StudentComponent({
     student_email_id: '',
     student_learning_subjects: '',
     ip_address: '',
+    referer: '',
     utm_source: '',
     utm_campaign: '',
     utm_medium: ''
@@ -172,6 +173,8 @@ export default function StudentComponent({
 
         studentRegistrationForm.ip_address = ip;
 
+        studentRegistrationForm.referer = window.location.href;
+
         const seoParams = getSeoParamsFromUrl();
         
         if (seoParams?.utm_campaign) {
@@ -244,6 +247,7 @@ export default function StudentComponent({
             student_mobile_number: '+91',
             student_learning_subjects: '',
             ip_address: '',
+            referer: '',
             utm_source: '',
             utm_campaign: '',
             utm_medium: ''
