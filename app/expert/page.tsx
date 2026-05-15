@@ -16,6 +16,8 @@ const page_name = "Expert";
 
 const [ meta_data, banner_data ] = await Promise.all([ getMetaData(headers, page_name), getBanner(headers, page_name) ]);
 
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 export const revalidate = 0;
 
 export const metadata: Metadata = {
