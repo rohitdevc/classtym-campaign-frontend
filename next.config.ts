@@ -33,7 +33,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'campaign.classtym.com',
+        hostname: 'staging.theneontree.in',
         port: '',
         pathname: '/**'
       },
