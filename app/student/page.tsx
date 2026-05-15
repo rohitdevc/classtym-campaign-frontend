@@ -16,7 +16,7 @@ const page_name = "Student";
 
 const [ meta_data, banner_data ] = await Promise.all([ getMetaData(headers, page_name), getBanner(headers, page_name) ]);
 
-export const revalidate = 600;
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: meta_data.meta_title,
