@@ -33,12 +33,19 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'staging.theneontree.in',
+        hostname: 'classtym-campaign.netlify.app',
+        port: '',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'portfolio.theneontree.in',
         port: '',
         pathname: '/**'
       },
     ]
   },
+  basePath: process.env.PUBLIC_PATH,
 
   async redirects() {
     return [
