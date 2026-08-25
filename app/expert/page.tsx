@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import ExpertComponent from "@/components/ExpertComponent";
-import { buildHeaders } from "@/lib/api";
 import { getMetaData, getBanner } from "@/lib/common";
 import { getExpertConversation, getExpertBenefits, getExpertWhyJoinUs } from "@/lib/expert";
 
@@ -11,10 +10,9 @@ export const viewport = {
   ],
 };
 
-const headers = await buildHeaders();
 const page_name = "Expert";
 
-const [ meta_data, banner_data ] = await Promise.all([ getMetaData(headers, page_name), getBanner(headers, page_name) ]);
+const [ meta_data, banner_data ] = await Promise.all([ getMetaData(page_name), getBanner(page_name) ]);
 
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
@@ -50,7 +48,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Expert() {
-  const [ expertConversation, expertBenefits, expertWhyJoinUs ] = await Promise.all([ getExpertConversation(headers), getExpertBenefits(headers), getExpertWhyJoinUs(headers) ]);
+  const [ expertConversation, expertBenefits, expertWhyJoinUs ] = await Promise.all([ getExpertConversation(), getExpertBenefits(), getExpertWhyJoinUs() ]);
 
   return (
     <ExpertComponent

@@ -3,14 +3,12 @@
 import { apiFetch } from "./api";
 import { MetaData, Banner } from "@/types/api";
 
-export const getMetaData = async (headers: Record<string, string>, page_name: string) => apiFetch<MetaData>("meta-data", {
+export const getMetaData = async (page_name: string) => apiFetch<MetaData>("meta-data", {
     method: "POST",
-    headers,
     body: JSON.stringify({ page_name })
 });
 
-export const getBanner = async (headers: Record<string, string>, page_name: string) => apiFetch<Banner>("banner", {
+export const getBanner = async (page_name: string) => apiFetch<Banner>("banner", {
     method: "POST",
-    headers,
     body: JSON.stringify({ page_name })
 });

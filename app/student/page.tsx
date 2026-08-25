@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import StudentComponent from "@/components/StudentComponent";
-import { buildHeaders } from "@/lib/api";
 import { getMetaData, getBanner } from "@/lib/common";
 import { getFeaturedExperts, getStudentBenefits, getStudentWhyJoinUs } from '@/lib/student';
 
@@ -11,10 +10,9 @@ export const viewport = {
   ],
 };
 
-const headers = await buildHeaders();
 const page_name = "Student";
 
-const [ meta_data, banner_data ] = await Promise.all([ getMetaData(headers, page_name), getBanner(headers, page_name) ]);
+const [ meta_data, banner_data ] = await Promise.all([ getMetaData(page_name), getBanner(page_name) ]);
 
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
@@ -50,7 +48,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Student() {
-  const [ FeaturedExperts, studentBenefits, studentWhyJoinUs ] = await Promise.all([ getFeaturedExperts(headers), getStudentBenefits(headers), getStudentWhyJoinUs(headers) ]);
+  const [ FeaturedExperts, studentBenefits, studentWhyJoinUs ] = await Promise.all([ getFeaturedExperts(), getStudentBenefits(), getStudentWhyJoinUs() ]);
 
   return (
     <StudentComponent 
