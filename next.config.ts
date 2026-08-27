@@ -39,7 +39,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'portfolio.theneontree.in',
+        hostname: 'classtym-campaign-backend.theneontree.in',
         port: '',
         pathname: '/**'
       },
